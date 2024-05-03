@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+{% from 'lib.j2' import bootswatch_spacelab_css, jquery_js %}
+
+{% block web_title %}
+    MIMS Archive
+{% endblock %}
+
+{% block favicon %}
+    <link rel="icon" href="{{ url_for('static', filename='images/mims-icon-32x32.png') }}" sizes="32x32"/>
+    <link rel="icon" href="{{ url_for('static', filename='images/mims-icon-192x192.png') }}" sizes="192x192"/>
+{% endblock %}
+
+{% block header %}
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm px-2 py-3 sticky-top">
+        <div class="container-fluid">
+            <img src="{{ url_for('static', filename='images/mims-logo.png') }}" height="70">
+            <div class="d-flex flex-column mims-logo-color fs-5 mx-4 mt-2">
+                <span class="fw-semibold">Marine Information Management System</span>
+                <span class="">South Africa's oceans and coastal data archive</span>
+            </div>
+            <div class="navbar-nav justify-content-end flex-grow-1 mt-2">
+                <div class="badge rounded-pill fs-6 fw-light mx-2">
+                    <a href="https://data.ocean.gov.za/" class="text-decoration-none">
+                        Home
+                    </a>
+                </div>
+                <div class="badge rounded-pill fs-6 fw-light mx-2">
+                    <a href="/mims/catalog/" class="text-decoration-none">
+                        Catalogue
+                    </a>
+                </div>
+                <div class="badge rounded-pill fs-6 fw-light mims-bg-color-mid mx-2">
+                    <a href="{{ url_for('home.index') }}" class="text-decoration-none text-reset">
+                        Archive
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block footer %}
+    <footer class="text-white">
+        <div class="mims-bg-color-light" style="height: 130px">
+            <div class="d-flex justify-content-evenly align-items-center">
+                <div class="pt-3">
+                    <p class="p-4 text-center" style="max-width: 550px">
+                        MIMS is a component of the National
+                        <a href="https://www.ocims.gov.za/" target="_blank" class="text-decoration-none">
+                            Oceans and Coasts Information Management System
+                        </a>
+                        (OCIMS) and manages the
+                        <a href="http://sadco.ocean.gov.za/" target="_blank" class="text-decoration-none">
+                            Southern African Data Centre for Oceanography
+                        </a>
+                        (SADCO).
+                    </p>
+                </div>
+                <div class="pe-5">
+                    <a href="https://www.ocims.gov.za/" target="_blank" class="p-5">
+                        <img src="{{ url_for('static', filename='images/ocims-logo.png') }}">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mims-bg-color-mid" style="height: 50px">
+            <div class="d-flex justify-content-center align-items-center">
+                <p class="pt-3">
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                    <a href="https://www.dffe.gov.za/" target="_blank" class="text-decoration-none text-white">
+                        Department of Forestry, Fisheries and the Environment
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    {{ bootswatch_spacelab_css() }}
+    <style>
+        :root {
+            --bs-link-color: #3E8A93;
+            --bs-table-bg: white;
+        }
+
+        body {
+            background-image: url("{{ url_for('static', filename='images/jonny-hayes-nmU2zDJ6I5k-unsplash-md.jpg') }}");
+        }
+    </style>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ jquery_js() }}
+    <script src="{{ url_for('static', filename='scripts/controls.js') }}"></script>
+{% endblock %}
